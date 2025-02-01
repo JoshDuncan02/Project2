@@ -1,4 +1,4 @@
-const giftsContainer = document.querySelector(".gifts-container");
+const giftsContainer = document.querySelector(".gifs-container");
 const input = document.querySelector("input");
 const button = document.querySelector(".btn");
 const trendingUrl =
@@ -10,7 +10,7 @@ let searchUrl =
   "https://api.giphy.com/v1/gifs/search?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25&offset=0&q=query";
 
 // fetchs data
-const fetchingifts = async (query) => {
+const fetchingifs = async (query) => {
   try {
     if (query) {
       const res = await fetch(`${searchUrl}q=${query}`);
@@ -25,7 +25,7 @@ const fetchingifts = async (query) => {
   }
 };
 // create Dom elements to be shown
-const showGift = (currentlyShowing) => {
+const showGifs = (currentlyShowing) => {
   currentlyShowing.forEach((item, i) => {
     const imgContainer = document.createElement("div");
     const imgElement = document.createElement("img");
@@ -56,5 +56,5 @@ button.addEventListener("click", (e) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  fetchingifts();
+  fetchingifs();
 });
