@@ -3,9 +3,7 @@ const input = document.querySelector("input");
 const button = document.querySelector(".btn");
 const trendingUrl =
   "https://api.giphy.com/v1/gifs/trending?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25";
-$( document ).ready(function() {
-    console.log( "ready!" );
-});
+
 let searchUrl =
   "https://api.giphy.com/v1/gifs/search?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25&offset=0&q=query";
 
