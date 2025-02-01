@@ -5,13 +5,13 @@ const trendingUrl =
   "https://api.giphy.com/v1/gifs/trending?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25";
 
 let searchUrl =
-  "https://api.giphy.com/v1/gifs/search?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25&offset=0&q=query";
+  "https://api.giphy.com/v1/gifs/search?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25&offset=0";
 
 // fetchs data
 const fetchingifs = async (query) => {
   try {
     if (query) {
-      const res = await fetch(`${searchUrl}q=${query}`);
+      const res = await fetch(`${searchUrl}&q=${query}`);
       removingChildren();
       normalizeData(res);
       return;
@@ -36,20 +36,20 @@ const showGifs = (currentlyShowing) => {
 };
 // remove elements previously loaded
 const removingChildren = () => {
-  Array.from(giftsContainer.children).forEach((child) => {
-    giftsContainer.removeChild(child);
+  Array.from(gifsContainer.children).forEach((child) => {
+    gifsContainer.removeChild(child);
   });
 };
 
 // sets data to a json
 const normalizeData = async (res) => {
   const resJson = res.json();
-  showGift(resJson.data);
+  showGif(resJson.data);
 };
 
 button.addEventListener("click", (e) => {
   e.preventDefault();
-  fetchingifts(input.value);
+  fetchingifs(input.value);
   input.value = "";
 });
 
