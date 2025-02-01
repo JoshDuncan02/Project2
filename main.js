@@ -3,6 +3,9 @@ const input = document.querySelector("input");
 const button = document.querySelector(".btn");
 const trendingUrl =
   "https://api.giphy.com/v1/gifs/trending?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25";
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
 let searchUrl =
   "https://api.giphy.com/v1/gifs/search?api_key=AtVnoZaM6IzFTqjKY2e2NPFeg7kIs9kI&limit=25&offset=0&q=query";
 
@@ -12,11 +15,11 @@ const fetchingifts = async (query) => {
     if (query) {
       const res = await fetch(`${searchUrl}q=${query}`);
       removingChildren();
-      await normalizeData(res);
+      normalizeData(res);
       return;
     }
     const res = await fetch(trendingUrl);
-    await normalizeData(res);
+    normalizeData(res);
   } catch (error) {
     console.log(error);
   }
@@ -42,7 +45,7 @@ const removingChildren = () => {
 
 // sets data to a json
 const normalizeData = async (res) => {
-  const resJson = await res.json();
+  const resJson = res.json();
   showGift(resJson.data);
 };
 
